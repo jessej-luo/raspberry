@@ -1,13 +1,15 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var sequelize = new Sequelizer('path/to/database.sqlite');
+var pythonShell = require('python-shell');
 
-sequelize
-    .authenticate()
-    .then(success =>
-        console.log("connection successful"))
-    .catch(err =>
-        console.log("connection failed"));
+// var sequelize = new Sequelizer('path/to/database.sqlite');
+//
+// sequelize
+//     .authenticate()
+//     .then(success =>
+//         console.log("connection successful"))
+//     .catch(err =>
+//         console.log("connection failed"));
 
 var app = express()
 
