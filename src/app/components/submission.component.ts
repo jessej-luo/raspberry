@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import {TextService} from '../services/submissiontext.service'
 
 
 @Component({
@@ -11,12 +12,12 @@ import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 export class Submission {
   text: any;
   constructor(
-    private router:Router
+    private router:Router,
+    public textService: TextService
   ) { }
 
   onSubmit() {
-    //post the text to the database
-    console.log(this.text);
+    this.textService.setText(this.text);
     let link = ['/feedback'];
 		this.router.navigate(link);
   }
