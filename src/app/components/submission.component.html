@@ -1,0 +1,14 @@
+<router-outlet></router-outlet>
+<div>
+    <h1>Please enter your Movie Review!</h1>
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+            <textarea [(ngModel)]="text"
+                    name="textarea"
+                    rows="20" cols="80"
+                    required>
+            </textarea>
+            <div>
+                <button type="submit" [disabled]="!f.valid" >Submit</button>
+            </div>
+    </form>
+</div>

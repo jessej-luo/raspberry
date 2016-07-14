@@ -2,11 +2,16 @@
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS} from '@angular/http';
+
+import {Submission} from './app/components/submission.component';
+import { APP_ROUTER_PROVIDERS } from './app/app.routes';
+
 // import {enableProdMode} from '@angular/core';
 
 // enableProdMode()
 
-bootstrap(SomeAPP, [
+bootstrap(Submission, [
+  APP_ROUTER_PROVIDERS,
   HTTP_PROVIDERS,
   { provide: LocationStrategy, useClass: HashLocationStrategy },
 ])

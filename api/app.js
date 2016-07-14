@@ -6,7 +6,7 @@ sequelize
     .authenticate()
     .then(success =>
         console.log("connection successful"))
-    .catch(err => 
+    .catch(err =>
         console.log("connection failed"));
 
 var app = express()
