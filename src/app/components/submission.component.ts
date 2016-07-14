@@ -17,5 +17,7 @@ export class Submission {
   onSubmit() {
     //post the text to the database
     console.log(this.text);
+    let link = ['/feedback'];
+		this.router.navigate(link);
   }
 }

@@ -5,17 +5,17 @@ import {Feedback} from '../app/components/feedback.component';
 const routes: RouterConfig = [
   {
   	path: '',
-  	redirectTo: 'submission',
+  	redirectTo: '/submission',
   	pathMatch: 'full'
   },
   {
     path: 'submission',
     component: Submission
   },
-  // {
-  //   path: 'feedback',
-  //   component: Feedback
-  // }
+  {
+    path: 'feedback',
+    component: Feedback
+  }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
