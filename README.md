@@ -1,1 +1,1 @@
-Deployment of sentiment analysis
+Sentiment Analysis algorithm based on Sebastian Raschka's book. Planning on expanding to my own algorithms and adding new functions to this. Used to test knowledge of angular2 and making an API for the first time. 
