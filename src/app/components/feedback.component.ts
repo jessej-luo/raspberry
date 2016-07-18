@@ -10,11 +10,6 @@ import {DataService} from '../services/submissiontext.service'
 
 export class Feedback {
 
-  private handleError(error: any) {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
-
   constructor(
     private router: Router,
     public dataService: DataService,
@@ -42,7 +37,6 @@ export class Feedback {
       .post(this.apiSubUrl, this.data, {headers: this.headers})
       .toPromise()
       .then(res => {
-        this.thanks = true;
         this.router.navigate(this.link);
       })
       .catch(this.handleError);
