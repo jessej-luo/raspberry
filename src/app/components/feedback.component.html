@@ -5,11 +5,11 @@
     </p>
     <h1>Prediction</h1>
     <p>
-        Holder text
+        The movie review is {{prediction.prediction}}. (probability: {{prediction.probability}})
     </p>
-    <button>Correct</button>
-    <button>Incorrect</button>
+    <button (click)="onClickCorrect()">Correct</button>
+    <button (click)="onClickIncorrect()">Incorrect</button>
     <div>
-        <button (click)="onClick()">Submit another review</button>
+        <button (click)="onClickResub()">Submit another review</button>
     </div>
 </div>

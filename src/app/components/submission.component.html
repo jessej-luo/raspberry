@@ -1,10 +1,10 @@
 <div>
     <h1>Please enter your Movie Review!</h1>
-    <form #f="ngForm" (ngSubmit)="onSubmit()">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
             <textarea [(ngModel)]="text"
                     name="moviereview"
                     rows="20" cols="80"
-                    >
+                    required>
             </textarea>
             <div>
                 <button type="submit" [disabled]="!f.valid" >Submit</button>

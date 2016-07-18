@@ -1,5 +1,6 @@
 import pickle
 import os
+import sqlite3
 import numpy as np
 from vectorizer import vect
 
@@ -17,3 +18,11 @@ def classify(document):
 def train(document, y):
     X = vect.transform([document])
     clf.partial_fit(X, [y])
+
+def sqlite_entry(path, document, y):
+    conn = sqlite3.connect(path)
+    c = conn.cursor()
+    c.execute("INSERT INTO review_db (review, sentiment, date)"\
+    " VALUES (?, ?, DATETIME('now'))", (document, y))
+    conn.commit()
+    conn.close()

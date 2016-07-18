@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import {TextService} from '../services/submissiontext.service'
+import {DataService} from '../services/submissiontext.service'
 
 @Component({
   selector: 'my-app',
@@ -13,7 +13,7 @@ import {TextService} from '../services/submissiontext.service'
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES],
-  providers: [TextService]
+  providers: [DataService]
 })
 
 export class AppComponent {
