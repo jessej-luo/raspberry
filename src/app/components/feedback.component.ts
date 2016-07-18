@@ -10,48 +10,31 @@ import {DataService} from '../services/submissiontext.service'
 
 export class Feedback {
 
+  prediction: any;
+  text: any;
+
   constructor(
     private router: Router,
     public dataService: DataService,
     private http: Http
   ) { }
 
-  private apiSubUrl = 'http://127.0.0.1:5000/api/feedback';
-  text = this.dataService.getText();
-  prediction = this.dataService.getPredict();
-  data = {
-    "review" : this.text,
-    "prediction" : this.prediction.prediction,
-    "probability" : this.prediction.probability
+  ngOnInit() {
+    this.prediction = this.dataService.getPredict();
+    this.text = this.dataService.getText();
   }
-  link = ['/submission'];
-  headers = new Headers({
-    'Content-Type' : 'application/json'
-  });
-
-  feedback_sub(value) {
-    this.data['feedback'] = value;
-    let data = JSON.stringify(this.data);
-    console.log(data);
-    this.http
-      .post(this.apiSubUrl, this.data, {headers: this.headers})
-      .toPromise()
-      .then(res => {
-        this.router.navigate(this.link);
-      })
-      .catch(this.handleError);
-    }
 
   onClickResub() {
-  		this.router.navigate(this.link);
-    }
+    let link = ['/submission']
+		this.router.navigate(link);
+  }
 
   onClickCorrect() {
-    this.feedback_sub("Correct");
+    this.dataService.addFeedback("Correct");
   }
 
   onClickIncorrect() {
-    this.feedback_sub("Incorrect");
+    this.dataService.addFeedback("Incorrect");
   }
 
 }

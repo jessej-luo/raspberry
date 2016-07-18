@@ -15,6 +15,7 @@ import 'rxjs/add/operator/toPromise';
 export class Submission {
 
   text: any;
+  thanks = false;
 
   constructor(
     private router: Router,
@@ -22,8 +23,13 @@ export class Submission {
     public dataService: DataService
   ) { }
 
+  ngOnInit() {
+    this.thanks = this.dataService.getThanks();
+  }
+
   onSubmit(): void {
     // Craft Post Request
+    this.dataService.setText(this.text);
     let data = JSON.stringify({ "review" : this.text });
     this.dataService.addSubmission(data);
   }

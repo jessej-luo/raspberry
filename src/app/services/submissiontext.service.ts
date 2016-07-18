@@ -11,17 +11,25 @@ export class DataService {
     }
 
     private submissionUrl = 'http://127.0.0.1:5000/api/results';
-    private feedBack = 'http://127.0.0.1:5000/api/feedback';
+    private feedbackUrl = 'http://127.0.0.1:5000/api/feedback';
     text: any;
     data: any;
+    thanks = false;
 
     constructor(
         private router: Router,
         private http: Http
     ) { }
 
+    getThanks() {
+        return this.thanks;
+    }
     getText() {
         return this.text;
+    }
+
+    setText(text) {
+        this.text = text;
     }
 
     getPredict() {
@@ -29,8 +37,7 @@ export class DataService {
     }
 
     addSubmission(data) {
-        this.text = data.review;
-
+        this.thanks = false;
         let headers = new Headers({
         'Content-Type' : 'application/json'
         });
@@ -44,4 +51,28 @@ export class DataService {
           })
           .catch(this.handleError);
      }
+
+    addFeedback(value) {
+        this.thanks = true;
+        var data = {
+            "review" : this.text,
+            "prediction" : this.data.prediction,
+            "probability" : this.data.probability
+          }
+
+        let headers = new Headers({
+            'Content-Type' : 'application/json'
+          });
+
+        data['feedback'] = value;
+        let submitted_data = JSON.stringify(data);
+        console.log(data);
+        this.http
+          .post(this.feedbackUrl, submitted_data, {headers: headers})
+          .toPromise()
+          .then(res => {
+            this.router.navigate(['/submission']);
+          })
+          .catch(this.handleError);
+    }
 }
